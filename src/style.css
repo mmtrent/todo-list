@@ -1,7 +1,6 @@
 body {
     padding: 0;
     margin: 0;
-
 }
 
 .container, html, body {
@@ -66,4 +65,21 @@ h1 {
     font-size: 8pt;
     background-color: #2e2210;
     height: 40px;
+}
+
+.add-todo-popup {
+    /*position: absolute;
+    margin-left: -180px;
+    margin-top: -240px; */
+    color: black;
+    font-size: 16pt;
+    padding: 5px;
+    display: none;
+    flex-direction: row;
+    justify-content:flex-start;
+    gap: 10px;
+}
+
+.add-todo-popup > p {
+    margin: 5px;
 }

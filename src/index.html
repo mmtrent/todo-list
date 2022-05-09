@@ -20,11 +20,22 @@
             <input type="button" value="Add Project">
           </div>
         </div>
-        <div id="body">test test</div>
+        <div id="body">
+          <div id="todos"></div>
+          <div class="add-todo-popup" id="add-todo-form">
+            <input type="text" id="title" placeholder="Title" name="title" required>
+            <input type="text" id="description" placeholder="Description" name="description">
+            <input type="text" id="dueDate" placeholder="Due Date" name="dueDate">
+            <input type="text" id="priority" placeholder="Priority" name="priority">
+            <input type="button" id="save-todo-btn" class="btn" value="Add">
+            <button type="button" id="close-todo-btn" class="btn cancel">Close</button>
+          </div>
+        </div>
       </div>
       <div id="footer">
         <h2>mmtrent</h2>
       </div>
   </div>
+
   </body>
-</html>
+</html> 

@@ -1,14 +1,11 @@
 import _ from 'lodash';
 import './style.css';
+import todoItems from './todoClasses';
+import createTodoView from './todoViewController';
+//import createProjectView from './projectViewController';
 
- function component() {
-   const element = document.createElement('div');
+//Create default project 'main'
+let main = new todoItems();
 
-  // Lodash, now imported by this script
-   element.innerHTML = _.join(['Hi', 'webpack'], ' ');
-   element.classList.add('hello');
-
-   return element;
- }
-
- document.body.appendChild(component());
+createTodoView(main);
+//createProjectView(main);
