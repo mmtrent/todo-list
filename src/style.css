@@ -83,3 +83,14 @@ h1 {
 .add-todo-popup > p {
     margin: 5px;
 }
+
+.projectInput {
+    width: 8em;
+}
+
+.projInputDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content:left;
+    gap: 2px;
+}

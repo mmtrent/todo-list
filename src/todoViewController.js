@@ -10,9 +10,9 @@ const clearForm = () => {
     document.getElementById('priority').value = "";
 }
 
-const createTodoView = (project0) => {
+const createTodoView = (currentProject) => {
     // Get array of todos from todoItems class 'allTodos' getter
-    let project = project0.allTodos;
+    let project = currentProject.allTodos;
 
     // Assign div that contains todo list to variable
     let todos = document.getElementById('todos');
@@ -52,15 +52,15 @@ const createTodoView = (project0) => {
     // Display todo save button after the todo info input fields
     const saveButton = document.getElementById('save-todo-btn');
     saveButton.addEventListener('click', function() {
-        saveTodo(project0);
+        saveTodo(currentProject);
         clearForm();
-        createTodoView(project0);
+        createTodoView(currentProject);
     }, { once: true }); // 'Once' option added to event listener to fix multiple entries to object bug
 
     // Create listener and logic for 'close' button on todo input form
     document.getElementById('close-todo-btn').addEventListener('click', function() {
         clearForm();
-        createTodoView(project0);
+        createTodoView(currentProject);
     }, { once: true });
 }
 
