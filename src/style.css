@@ -94,3 +94,10 @@ h1 {
     justify-content:left;
     gap: 2px;
 }
+
+#todoTitle {
+    padding: 0;
+    margin: 0;
+    font-size: 14pt;
+    color: black;
+}
