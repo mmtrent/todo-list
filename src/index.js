@@ -1,19 +1,32 @@
 import _ from 'lodash';
 import './style.css';
-import todoItems from './todoClasses';
+import Project from './todoClasses';
 import createTodoView from './todoViewController';
 import createProjectView from './projectViewController';
 
+const projects = []; // Array to store project objects
+
 //Create default project 'main'
-let project0 = new todoItems();
-let project1 = new todoItems();
+let project = new Project('Main'); // 'project' is new Project object
+project.newTodo('Clean Yard', 'Pick up pine needles', 'Tomorrow', 'High');
+projects.push(project)
 
-const projects = [{title:"Main", object: project0}, 
-{title:"Yard", object: project1}];
+project = new Project('House Work'); // 'project' is new Project object
+project.newTodo('Paint House', 'Pick up pine needles', 'Tomorrow', 'High');
+projects.push(project)
 
 
-createTodoView(projects[1].object);
+console.log(projects[0].title) // Prints "Main"
+console.log(projects[0].todoItems[0].title) // Prints "Clean Yard"
+
+console.log(projects[1].title) // Prints "House Work"
+console.log(projects[1].todoItems[0].title) // Prints "Paint House"
+
+// Add todo to "Main" project
+projects[0].newTodo('Take out trash', 'Trash day coming', 'Tomorrow', 'High');
+console.log(projects[0].todoItems[1].title) // Prints "Take out trash"
 
 export default projects;
 
-createProjectView();
+createProjectView(projects);
+//createTodoView();

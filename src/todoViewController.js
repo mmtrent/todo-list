@@ -1,5 +1,7 @@
-import todoItems from "./todoClasses";
+import projectTodos from "./todoClasses";
 import saveTodo from "./saveTodo";
+import createProjectView from "./projectViewController";
+import projects from ".";
 
 // Function to clear new todo input form after saving or closing
 const clearForm = () => {
@@ -11,10 +13,7 @@ const clearForm = () => {
 }
 
 const createTodoView = (currentProject) => {
-    // Get array of todos from todoItems class 'allTodos' getter
-    let project = currentProject.allTodos;
-
-    // Assign div that contains todo list to variable
+// Assign div that contains todo list to variable
     let todos = document.getElementById('todos');
 
     // Clear current todo body contents (for use in view refresh)
@@ -22,10 +21,11 @@ const createTodoView = (currentProject) => {
     todos.removeChild(todos.firstChild);
     }
     
-    // Declare variable to store list of todo items
+    // Declare variable to store list of todo item divs
     let todoItemView;
 
     // Iterate through project's todo item array and display each
+    let project = currentProject.todoItems;
     for (let i = 0; i < project.length; i++) {
         todoItemView = document.createElement('div');
         todoItemView.innerText = `${project[i].title} due ${project[i].dueDate}`;
@@ -47,13 +47,15 @@ const createTodoView = (currentProject) => {
 
         // Default text cursor to title field
         document.getElementById('title').focus();
-    })
+    }, {once: true });
 
     // Display todo save button after the todo info input fields
     const saveButton = document.getElementById('save-todo-btn');
     saveButton.addEventListener('click', function() {
+
         saveTodo(currentProject);
         clearForm();
+        console.log(currentProject)
         createTodoView(currentProject);
     }, { once: true }); // 'Once' option added to event listener to fix multiple entries to object bug
 

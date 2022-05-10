@@ -1,5 +1,21 @@
-// An individual todo item.
-class todoItem {
+// Class that holds collection of todo items and methods in a 'project'
+class Project {
+    constructor(title) {
+        this.title = title;
+        this.todoItems = []; // Array to store Todo Item objects
+    }
+    // Create new todo item and save it in the array
+    newTodo(title,description,dueDate,priority){
+        let item = new TodoItem(title, description, dueDate, priority);
+        this.todoItems.push(item);
+    }
+    get projectTodos() {
+        return this.todoitems;
+    }
+}
+
+// An individual todo item
+class TodoItem {
     constructor(title, description, dueDate, priority) {
         this.title = title;
         this.description = description;
@@ -8,20 +24,5 @@ class todoItem {
     }
 }
 
-// Class that holds collection of todo items and methods to return the data
-class todoItems {
-    constructor() {
-        this.todoitems = [];
-    }
-    // Create new todo item and save it in the array
-    newTodo(title,description,dueDate,priority){
-        let item = new todoItem(title, description, dueDate, priority);
-        this.todoitems.push(item);
-    }
-    get allTodos() {
-        return this.todoitems;
-    }
-}
 
-
-export default todoItems;
+export default Project;

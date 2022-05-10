@@ -1,4 +1,6 @@
 import projects from './index';
+import saveProject from './saveProject';
+import createTodoView from './todoViewController';
 
 const createProjectView = () => {
     let projList = document.getElementById('projectList');
@@ -15,11 +17,15 @@ const createProjectView = () => {
         let inputLi = document.createElement('li');
         projList.appendChild(inputLi);
         inputLi.innerText = projName;
+        inputLi.addEventListener('click', function() {
+            createTodoView(projects[i])
+            //console.log(projects[i].title)
+        });
     }
     
     // Create listener for 'Add Project' button
     document.getElementById('addProject').addEventListener('click', function() {
-        createProjectInput();
+        //createProjectInput();
 
     }, { once: true });
 }
@@ -47,14 +53,10 @@ const createProjectInput = () => {
 
     projInputBtn.addEventListener('click', function() {
         let newProject = document.getElementsByName("newProject");
-        let project3 = {title: newProject[0].value, object: null}
-        projects.push(project3);
-        console.log(newProject[0].value)
+        saveProject(newProject)
+
         createProjectView();
     });
-
-   // createProjectView();
-
 }
 
 export default createProjectView;
