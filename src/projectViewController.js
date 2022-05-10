@@ -29,6 +29,7 @@ const createProjectInput = () => {
     projInput.id = 'projectinput';
     projInput.setAttribute("type", "text");
     projInput.setAttribute("name", "newProject");
+    projInput.setAttribute("placeholder", "New Project");
     projInput.classList.add('projectInput');
 
     let inputLi = document.createElement('li');
