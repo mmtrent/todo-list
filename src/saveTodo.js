@@ -1,14 +1,11 @@
-import Project from "./todoClasses";
-
-const saveTodo = (project) => {
+export const saveTodo = (project) => {
 
     let title = document.getElementsByName('title');
     let description = document.getElementsByName('description');
     let dueDate = document.getElementsByName('dueDate');
     let priority = document.getElementsByName('priority');
 
-    project.newTodo(title[0].value, description[0].value, dueDate[0].value, priority[0].value);
-
+    project.addNewTodoItemToProject(title[0].value, description[0].value, dueDate[0].value, priority[0].value);
 }
 
 export default saveTodo;

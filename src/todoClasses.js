@@ -21,7 +21,7 @@ class TodoList {
     }
 }
 
-class Project {
+export class Project {
     constructor(title) {
         this.title = title;
         this.todoItems = []; // Array to store Todo Item objects
