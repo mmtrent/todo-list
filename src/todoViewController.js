@@ -1,6 +1,6 @@
 import projectTodos from "./todoClasses";
 import saveTodo from "./saveTodo";
-import createProjectView from "./projectViewController";
+import createProjectView from "./projectViewControllerOLD";
 import projects from ".";
 
 // Function to clear new todo input form after saving or closing
@@ -15,7 +15,7 @@ const clearForm = () => {
 const createTodoView = (currentProject) => {
 // Assign div that contains todo list to variable
     let todos = document.getElementById('todos');
-
+    console.log('hey, im outside of the event listener')
     // Clear current todo body contents (for use in view refresh)
     while (todos.firstChild) {
     todos.removeChild(todos.firstChild);
@@ -52,12 +52,12 @@ const createTodoView = (currentProject) => {
     // Display todo save button after the todo info input fields
     const saveButton = document.getElementById('save-todo-btn');
     saveButton.addEventListener('click', function() {
-
         saveTodo(currentProject);
         clearForm();
         console.log(currentProject)
         createTodoView(currentProject);
-    }, { once: true }); // 'Once' option added to event listener to fix multiple entries to object bug
+        console.log('I was called from todo view')
+    }, false); // 'Once' option added to event listener to fix multiple entries to object bug
 
     // Create listener and logic for 'close' button on todo input form
     document.getElementById('close-todo-btn').addEventListener('click', function() {
