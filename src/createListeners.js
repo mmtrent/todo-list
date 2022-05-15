@@ -3,14 +3,16 @@ import { createProjectView } from './UI.js';
 import { createProjectInput } from './UI.js';
 import { showNewTodoForm } from './UI.js';
 import { clearForm } from './UI.js';
+import { underlineCurrentProject } from './UI.js';
 import saveTodo from './saveTodo'
 
 const createListeners = (todolist) => {
     document.addEventListener('click', function(event) {
         // If user clicks one of the Project titles, load project
-        if (event.target.matches('.projectItem')) {
+        if (event.target.matches('.project-item')) {
             todolist.setCurrentProject(todolist.projects[event.target.id])
-            createProjectView(todolist);
+            //underlineCurrentProject(event.target.id);
+            createProjectView(todolist, event.target.id);
             createTodoView(todolist.currentProject, todolist);
         }
 

@@ -52,7 +52,7 @@ h1 {
 
 #projects > h1 {
     padding: 0;
-    font-size: 14pt;
+    font-size: 18pt;
     color: black;
 }
 
@@ -86,6 +86,7 @@ h1 {
 
 .projectInput {
     width: 8em;
+    height: 1.5em;
 }
 
 .projInputDiv {
@@ -96,8 +97,50 @@ h1 {
 }
 
 #todoTitle {
-    padding: 0;
+    padding: 0 0 10px 10px;
     margin: 0;
     font-size: 14pt;
     color: black;
+}
+
+.project-list {
+    padding-left: 4px;
+}
+
+.todo-div {
+    padding: 0 0 0 10px;
+}
+
+.project-item {
+    list-style-type: none;
+    font-size: 16pt;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.active-project {
+    text-decoration: underline;
+    padding-left: 8px;
+    font-weight: 700;
+}
+
+#addProject {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14pt;
+    font-weight: 600;
+}
+
+.new-project-box-li {
+    padding-top: 8px;
+    list-style-type: none;
+}
+
+.new-todo-btn {
+    cursor: pointer;
+    margin: 10px 0 10px 10px;
+    border: none;
+    background: none;
+    font-size: 14pt;
 }

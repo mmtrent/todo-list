@@ -1,26 +1,29 @@
 import createListeners from "./createListeners";
 
-export const createProjectView = (todolist) => {
+export const createProjectView = (todolist, divID) => {
     clearProjects();
-    createProjectList(todolist.projects);
+    createProjectList(todolist.projects, divID);
     createListeners(todolist);
 }
 
-const createProjectList = (projects) => {
+const createProjectList = (projects, divID) => {
     projects.forEach(function (project, index) {
-        createProjectListItem(project, index);
+        createProjectListItem(project, index, divID);
     });
 }
 
-const createProjectListItem = (project, index) => {
+const createProjectListItem = (project, index, divID) => {
     let projIndex = index;
     let projName = project.title;
     let projList = document.getElementById('projectList');
     let inputLi = document.createElement('li');
-    inputLi.classList.add('projectItem');
+    inputLi.classList.add('project-item');
     inputLi.id = projIndex;
     projList.appendChild(inputLi);
     inputLi.innerText = projName;
+    if (index == divID) {
+        inputLi.classList.add('active-project')
+    }
 }
 
 const clearProjects = () => {
@@ -37,6 +40,7 @@ export const createProjectInput = () => {
     projInput.classList.add('projectInput');
 
     let inputLi = document.createElement('li');
+    inputLi.classList.add('new-project-box-li')
     let inputDiv = document.createElement('div');
     inputDiv.classList.add('projInputDiv');
     document.getElementById('projectList').appendChild(inputLi);
@@ -67,6 +71,7 @@ export const createTodoView = (currentProject) => {
     let project = currentProject.todoItems;
     for (let i = 0; i < project.length; i++) {
         todoItemView = document.createElement('div');
+        todoItemView.classList.add('todo-div')
         todoItemView.innerText = `${project[i].title} due ${project[i].dueDate}`;
         todos.appendChild(todoItemView);
     }
@@ -74,8 +79,9 @@ export const createTodoView = (currentProject) => {
     // Add new todo button after list of todos
     const newTodoButton = document.createElement('input');
     newTodoButton.setAttribute("type", "button");
-    newTodoButton.setAttribute("value", "Add item");
+    newTodoButton.setAttribute("value", "+ Add item");
     newTodoButton.id = 'new-todo-btn';
+    newTodoButton.classList.add('new-todo-btn');
     todos.appendChild(newTodoButton);
 }
 
