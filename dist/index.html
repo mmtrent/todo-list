@@ -23,14 +23,13 @@
           <h1 id="todoTitle">Todo List:</h1>
           <div id="todos"></div>
           <div class="add-todo-popup" id="add-todo-form">
+
             <input type="text" id="title" placeholder="Title" name="title" required>
             <input type="text" id="description" placeholder="Description" name="description">
             <input type="date" id="dueDate" placeholder="Due Date" name="dueDate">
-            <!--<input type="text" id="priority" placeholder="Priority" name="priority">!-->
-              <!--<label for="priority">Priority</label>!-->
-              <select id="priority" name="priority" multiple>
-                <option value="low">Low</option>
-                <option value="high">High</option>
+              <select id="priority" name="priority" size="1">
+                <option value="low">Low Priority</option>
+                <option value="high">High Priority</option>
               </select>
             <input type="button" id="save-todo-btn" class="btn" value="Save">
             <button type="button" id="close-todo-btn" class="btn cancel">Cancel</button>
