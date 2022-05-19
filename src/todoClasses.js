@@ -1,3 +1,5 @@
+import { localSaveTodo } from "./localStorage";
+
 // Class that holds collection of todo items and methods in a 'project'
 class TodoList {
     constructor(title) {
@@ -30,7 +32,17 @@ export class Project {
     addNewTodoItemToProject(title,description,dueDate,priority){
         let item = new TodoItem(title, description, dueDate, priority);
         this.todoItems = [...this.todoItems, item];
+        localSaveTodo();
     }
+
+    removeTodoItemFromProject(targetTitle) {
+        const index = this.todoItems.findIndex(todoItems => {
+            return todoItems.title === targetTitle;
+        })
+        console.log(index);
+        this.todoItems.splice(index, 1)
+    }
+
     get projectTodos() {
         return this.todoitems;
     }
@@ -38,10 +50,7 @@ export class Project {
 
 class TodoItem {
     constructor(title, description, dueDate, priority) {
-        this.title = title;
-        this.description = description;
-        this.dueDate = dueDate;
-        this.priority = priority;
+ 
     }
 }
 

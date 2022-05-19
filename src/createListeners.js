@@ -4,7 +4,8 @@ import { createProjectInput } from './UI.js';
 import { showNewTodoForm } from './UI.js';
 import { clearForm } from './UI.js';
 import { underlineCurrentProject } from './UI.js';
-import saveTodo from './saveTodo'
+import saveTodo from './saveTodo';
+
 
 const createListeners = (todolist) => {
     document.addEventListener('click', function(event) {
@@ -35,6 +36,7 @@ const createListeners = (todolist) => {
         else if (event.target.matches('#close-todo-btn')) {
             clearForm();
             createTodoView(todolist.currentProject);
+            createListeners(todolist);
         }
 
         // If user clicks 'Add Project'
@@ -49,6 +51,15 @@ const createListeners = (todolist) => {
             let newProjectName = newProject[0].value;
             todolist.createNewProject(newProjectName)
             createProjectView(todolist);
+        }
+
+        // If user clicks trash can icon on todo item, delete todo from project
+        else if (event.target.matches('#Todo-Delete-Btn')) {
+            let targetTodo = event.target.parentNode.parentNode.firstChild.innerText;
+            console.log(targetTodo);
+            todolist.currentProject.removeTodoItemFromProject(targetTodo);
+            createTodoView(todolist.currentProject);
+            createListeners(todolist);
         }
 
         // If user misclicks the screen anywhere else, reload the listeners

@@ -1,4 +1,5 @@
 import createListeners from "./createListeners";
+import TrashIcon from './delete_brown.svg'
 
 export const createProjectView = (todolist, divID) => {
     clearProjects();
@@ -65,15 +66,24 @@ export const createTodoView = (currentProject) => {
     }
     
     // Declare variable to store list of todo item divs
-    let todoItemView;
+    let todoItem;
 
     // Iterate through project's todo item array and display each
     let project = currentProject.todoItems;
     for (let i = 0; i < project.length; i++) {
-        todoItemView = document.createElement('div');
-        todoItemView.classList.add('todo-div')
-        todoItemView.innerText = `${project[i].title} due ${project[i].dueDate}`;
-        todos.appendChild(todoItemView);
+        todoItem = document.createElement('div');
+        todoItem.classList.add('todo-div')
+        let todoTitle = document.createElement('div');
+        
+        let todoDelete = document.createElement('div');
+        let deleteIcon = new Image();
+        deleteIcon.src = TrashIcon;
+        deleteIcon.id = "Todo-Delete-Btn";
+        todoTitle.innerText = project[i].title;
+        todoItem.appendChild(todoTitle);
+        todoDelete.appendChild(deleteIcon)
+        todoItem.appendChild(todoDelete);
+        todos.appendChild(todoItem);
     }
 
     // Add new todo button after list of todos
