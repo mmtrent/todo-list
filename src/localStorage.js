@@ -10,30 +10,21 @@ import { todolist } from "./index.js"
 import TodoList from "./todoClasses.js";
 
 export const localSaveTodo = () => {
+    let todoListStringified = JSON.stringify(todolist.projects);
 
-    // create array of project titles and save to local storage
-    let projectTitles = [];
-    todolist.projects.forEach(project => projectTitles = [...projectTitles, project.title]);
-    localStorage.setItem("projects", projectTitles);
-
-    console.log(JSON.stringify(todolist.projects))
-    console.log(todolist.projects[0].todoItems[0].title)
-    let todoListStringified = JSON.stringify(todolist);
-    //return todoListStringified;
-
-
-    // save todo items as a json string
-    
-
-
+    localStorage.setItem("todoList", todoListStringified);
 }
 
-export const localLoadTodo = () => {
-    let todoListStringified = localSaveTodo();
+export const localLoadTodo = (todolist) => {
+    if(localStorage.getItem("todoList") != null) {
+    let todoListStringified = localStorage.getItem("todoList");
     let todoListParsed = JSON.parse(todoListStringified);
-    return todoListParsed;
+    todoListParsed.forEach(function(project, index) {
+        todolist.createNewProject(project.title)
+        project.todoItems.forEach(todo => {
+            todolist.projects[index].addNewTodoItemToProject(todo.title, todo.description, todo.dueDate, todo.priority)
+        })
+    });
 
-    // load project titles
-    localStorage.getItem("projects")
-    projectTitles.forEach(project => todolist.createNewProject(project))
+    };
 }

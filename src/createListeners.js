@@ -9,6 +9,7 @@ import saveTodo from './saveTodo';
 
 const createListeners = (todolist) => {
     document.addEventListener('click', function(event) {
+        
         // If user clicks one of the Project titles, load project
         if (event.target.matches('.project-item')) {
             todolist.setCurrentProject(todolist.projects[event.target.id])
